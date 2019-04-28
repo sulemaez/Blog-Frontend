@@ -26,5 +26,28 @@ module.exports = [
         }
       }
     ]
+  },
+  {
+    type: 'tree',
+    icon: 'fa fa-files-o',
+    name: 'Posts',
+    items: [
+      {
+        type: 'item',
+        icon: 'fa fa-circle-o',
+        name: 'Add new',
+        router: {
+          name:'newPost'
+        }
+       } ,
+      {
+        type: 'item',
+        icon: 'fa fa-circle-o',
+        name: 'view all',
+        router: {
+          name : 'indexPosts'
+        }
+      }
+    ]
   }
 ]

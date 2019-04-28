@@ -10,9 +10,16 @@ import router from './router/router'
 // import EventBus from './lib/eventBus.js'
 import axios from 'axios'
 import EventBus from 'va/lib/eventBus.js'
-import {ServerTable,ClientTable, Event} from 'vue-tables-2';
-Vue.use(ClientTable,{},false,'bootstrap3');
-Vue.use(ServerTable,{},false,'bootstrap3');
+import VueSweetalert2 from 'vue-sweetalert2';
+
+const alertOptions ={
+  confirmButtonColor: '#74b4ff',
+  cancelButtonColor: '#ff0000'
+}
+
+
+// Vue.use(BootstrapVue)
+Vue.use(VueSweetalert2,alertOptions)
 Vue.prototype.$bus = EventBus
 Vue.prototype.$http = axios
 Vue.prototype.$url = "http://localhost:8080/"

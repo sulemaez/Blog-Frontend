@@ -24,7 +24,7 @@ export default {
   data () {
     return {
        slideMenuItems: slideMenuItems,
-       baseurl : 'http://localhost:8080'
+       baseurl : this.$url
     }
   },
   created () {

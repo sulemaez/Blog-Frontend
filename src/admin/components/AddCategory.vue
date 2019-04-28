@@ -28,11 +28,28 @@
               this.$http.post(`${this.$url}categories`,{
 				        name: nameS,
 						    description: descriptionS 
-  					  }).catch((error) =>{
-				  			console.log(error.message);
-			        }).then(()=>{
-								this.$router.app.$emit('alert');
-			       });
+  					  }).then(()=>{
+									//alert
+									this.$swal(
+										 {
+											 type: 'success',
+											 title: 'Category Added',
+											 showConfirmButton: false,
+											 timer: 1500
+										 }
+									);
+
+									//clear fields
+									document.getElementById("name").value = ""
+									document.getElementById("description").value = ""
+			       }).catch((error) =>{
+				  			    this.$swal({
+											 type : 'error',
+											 title : 'Failed to delete!',
+											 showConfirmButton : false,
+											 timer : 1500 
+										})
+			        });
       	 }
       },
 	};

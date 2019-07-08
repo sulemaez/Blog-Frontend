@@ -49,5 +49,28 @@ module.exports = [
         }
       }
     ]
+  },
+  {
+    type: 'tree',
+    icon: 'fa fa-files-o',
+    name: 'Tags',
+    items: [
+      {
+        type: 'item',
+        icon: 'fa fa-circle-o',
+        name: 'Add tag',
+        router: {
+          name:'newTag'
+        }
+       } ,
+      {
+        type: 'item',
+        icon: 'fa fa-circle-o',
+        name: 'view all',
+        router: {
+          name : 'indexTags'
+        }
+      }
+    ]
   }
 ]

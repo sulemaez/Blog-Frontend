@@ -2,6 +2,7 @@
 	<div class="row">
 		<div class="outer">
 		<form class="inner con">
+			<h4>Add Category</h4>
 			<div class="form-group">
 				<label>Name</label>
 				<input class="form-control" type="text" name="name" id="name">
@@ -17,7 +18,6 @@
 </template>
 
 <script>
-	import VAButton from 'va/components/VAButton'
 	export default{
       methods :{
       	  sendCategory(event){
@@ -45,7 +45,7 @@
 			       }).catch((error) =>{
 				  			    this.$swal({
 											 type : 'error',
-											 title : 'Failed to delete!',
+											 title : 'Failed to Add!',
 											 showConfirmButton : false,
 											 timer : 1500 
 										})

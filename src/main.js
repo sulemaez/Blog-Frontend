@@ -11,20 +11,20 @@ import router from './router/router'
 import axios from 'axios'
 import EventBus from 'va/lib/eventBus.js'
 import VueSweetalert2 from 'vue-sweetalert2';
+import app from './App.vue'
 
-const alertOptions ={
-  confirmButtonColor: '#74b4ff',
-  cancelButtonColor: '#ff0000'
+let alertOptions ={
+
 }
-
 
 // Vue.use(BootstrapVue)
 Vue.use(VueSweetalert2,alertOptions)
 Vue.prototype.$bus = EventBus
 Vue.prototype.$http = axios
-Vue.prototype.$url = "http://localhost:8080/"
+Vue.prototype.$url = "http://localhost:8080/admin/"
+Vue.prototype.$urluser = "http://localhost:8080/"
 
-import app from './admin/App'
+
 
 new Vue({
   el: '#vue-app',

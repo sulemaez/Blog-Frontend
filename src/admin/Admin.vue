@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <div class="wrapper text-center">
       <va-navibar></va-navibar>
       <va-slider :slideMenuItems="slideMenuItems"></va-slider>

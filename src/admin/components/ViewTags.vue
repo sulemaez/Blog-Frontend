@@ -9,13 +9,35 @@
   >
    <div slot="action-slot" slot-scope="props">
       <button class="btn btn-primary" @click="editRow(props.rowData)"><i class="glyphicon glyphicon-pencil"></i></button> 
-      <button class="btn btn-danger" @click="deleteRow(props.rowData.postId)"><i class="glyphicon glyphicon-remove"></i></button> 
+      <button class="btn btn-danger" @click="deleteRow(props.rowData.categoryId)"><i class="glyphicon glyphicon-remove"></i></button> 
    </div>
     </vuetable>
     <vuetable-pagination ref="pagination"
       :css="css.pagination"
       @vuetable-pagination:change-page="onChangePage"
     ></vuetable-pagination>
+     
+       <!-- Modal -->
+      <div class="modal fade" id="bsModal" tabindex="-1" role="dialog" aria-labelledby="bsModalLabel" data-toggle="modal" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="bsModalLabel">Edit {{editCategoryName}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input class="form-control" type="text" name="name" id="name" :value="editCategoryName">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" @click="confirmEdit">Edit</button>
+              <button type="button" class="btn btn-danger" @click="cancelEdit">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
    </div>
 </template>
@@ -30,35 +52,24 @@ export default {
   },
   data(){
      return{
-         url : `${this.$url}posts`,
+         url : `${this.$url}tags`,
          editCategoryName:"",
          editDescription:"",
          editId : -1,
          fields: [
            {
             title : 'ID',
-            name : 'postId',
-            sortField : 'postId',
+            name : 'tagId',
+            sortField : 'tagId',
             width : '10%'
            },
           { 
-             name: 'title', 
-             title: 'TITLE',
-             sortField: 'title',
-             width : "40%",
-             titleClass: "text-center",
+             name: 'name', 
+             title: 'NAME',
+             sortField: 'name',
+             width : "20%",
+            titleClass: "text-center",
              
-          },
-           {
-             name : 'category.name',
-             title : 'CATEGORY',
-             width: '20%'
-          },
-          {
-             name : 'created',
-             title : 'CREATED',
-             sortField : 'created',
-             width: '20%'
           }, 
            {
            name: "action-slot",
@@ -114,26 +125,26 @@ export default {
                    .then((data)=>{
                     this.$swal.fire(
                       'Deleted!',
-                      'Post deleted.',
+                      'Tag deleted.',
                       'success'
                     )
                    //refresh table
                    this.$refs.vuetable.refresh()
                 }).catch((err)=>{
-                 this.$swal({
-						type : 'error',
-						title : 'Failed to delete!',
-						showConfirmButton : false,
-						timer : 1500 
-					})
-             })
-           }
+                    this.$swal({
+							type : 'error',
+							title : 'Failed to delete!',
+							showConfirmButton : false,
+							timer : 1500 
+						})
+                })
+            }
         })
      },
      editRow(rowData){
-       this.$router.push({name : 'editPost',params :{
-           id : rowData.postId
-       }})
+         $('#bsModal').modal('show')
+         this.editCategoryName = rowData.name
+         this.editId = rowData.tagId
      },
      onChangePage(page){
         this.$refs.vuetable.changePage(page)
@@ -169,11 +180,11 @@ export default {
                  })
                  .catch((err)=>{
                     this.$swal({
-								type : 'error',
-								title : 'Failed to Edit!',
-								showConfirmButton : false,
-								timer : 1500 
-							})
+											 type : 'error',
+											 title : 'Failed to Edit!',
+											 showConfirmButton : false,
+											 timer : 1500 
+										})
                  })
              }
          })

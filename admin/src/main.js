@@ -2,9 +2,9 @@ import JQuery from 'jquery'
 
 // css files
 import 'va/lib/css'
- 
 // js files
 import 'va/lib/script'
+
 import Vue from 'vue'
 import router from './router/router'
 // import EventBus from './lib/eventBus.js'

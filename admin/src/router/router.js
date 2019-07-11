@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+//import user routes
+import Home from '../users/Home.vue'
+//import admin routes
 import AddCategory from '../admin/components/AddCategory.vue'
 import ViewCategories from '../admin/components/ViewCategories.vue'
-//TODO add component imports
 import AddPost from '../admin/components/AddPost.vue'
 import ViewPosts from '../admin/components/ViewPosts.vue'
 import AddTag from '../admin/components/AddTag.vue'
@@ -14,9 +16,9 @@ Vue.use(Router)
 export default new Router({
 	mode: 'history',
 	routes:[
-     {
+       {
         
-       path : '/admin',
+       path : '/',
        component :  Admin,
        children : [
         {

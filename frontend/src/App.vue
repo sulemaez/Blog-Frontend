@@ -14,4 +14,12 @@ export default {
   }
 }
 </script>
+ 
+<style>
+ #app{
+    background-color: #fafafa;
+}
+ 
+</style>
+
 

@@ -1,6 +1,5 @@
 <template>
-   <div>
-      <div class="container-fluid shadow pl-4">
+    <header class="container-fluid shadow pl-4">
        <nav class="navbar navbar-light bg-white justify-content-between">  
         <a class="navbar-brand">
              <img class="img-responsive float-left mr-2" style="width:30px;" src="../assets/logo.jpg" alt=""> 
@@ -11,12 +10,18 @@
             <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
         </form>
      </nav>
-    </div>   
-   </div> 
+    </header>   
 </template>
 
+<style>
+  header{
+      background-color: white;
+  } 
+</style>
+
 <script>
-export default {
-    name : 'navbar'
-}
+    export default {
+        name : 'navbar'
+    }
 </script>
+

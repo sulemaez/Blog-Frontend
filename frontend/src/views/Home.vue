@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import Featured from '../components/home/Fetured'
-export default {
-  name: 'home',
-  components: {
-    featured : Featured
+  import Featured from '../components/home/Fetured'
+  export default {
+    name: 'home',
+    components: {
+      featured : Featured
+    }
   }
-}
 </script>

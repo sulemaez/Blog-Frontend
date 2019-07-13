@@ -20,9 +20,13 @@ export default new Router({
       component: Search
     },
     {
-      path: '/post',
+      path: '/post/:slug',
       name: 'post',
       component: Post
+    },
+    {
+      path: '/post',
+      component: Home
     }
   ]
 })

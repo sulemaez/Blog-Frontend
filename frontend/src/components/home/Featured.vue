@@ -20,7 +20,7 @@
             }
         },
         mounted(){
-            this.$http.get(`${this.$url}featured`)
+            this.$http.get(`${this.$url}posts/featured`)
             .then(data=>{
                this.articles = data.data
             })

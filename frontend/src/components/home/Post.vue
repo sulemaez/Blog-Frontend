@@ -1,5 +1,5 @@
 <template>
-    <div class="post col-12 col-sm-12 col-md-5 col-lg-5 post shadow  mb-4 ml-3 p-4">
+    <div class="post col-12 col-sm-12 col-md-5 col-lg-5 post shadow  mb-4 ml-3 p-4" @click="showPost()">
        <div class="row">
            <div class="col-7">
                <h5 class="post-title">{{post.title}}</h5>
@@ -51,13 +51,13 @@ export default {
     props:{
         post : Object
     },
-    data(){
-
-    },
     methods :{
         properDate : (d)=>{
            let date = new Date(d) 
            return date.toDateString()
+        },
+        showPost(){
+            this.$router.push(`/post/${this.post.slug}`)
         }
     }
 }

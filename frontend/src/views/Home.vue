@@ -25,7 +25,7 @@
       }
     },
     mounted(){
-      this.$http.get(`${this.$url}admin/posts`)
+      this.$http.get(`${this.$url}/posts`)
       .then(data=>{
          this.posts = data.data.data
       })

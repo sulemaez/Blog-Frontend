@@ -29,7 +29,8 @@
        font-weight: 600 !important;
        font-size: 24px !important;
        line-height: 28px !important;
-       letter-spacing: -.42px!important;
+       letter-spacing: 0px!important;
+       color: rgba(0, 0, 0, 0.84);
    }
 
    .preview-text, .preview-time{

@@ -1,5 +1,5 @@
 <template>
-    <div class="feature col-md-3 col-xs-6 col-lg-3 shadow">
+    <div class="feature col-12 col-sm-5 col-md-5 col-lg-3 shadow">
         <div class="row">
             <div class="col-md-12 featured-img p-0">
                 <img class="img-responsive" :src="article.img" alt="">
@@ -7,7 +7,7 @@
             <div class="col-md-12 p-3">
                 <h4 class="preview-header">{{article.title}}</h4>
                 <p class="preview-text">{{article.preview}}</p>
-                <p class="preview-time">{{article.date}}</p>
+                <p class="preview-time">{{ properDate(article.created) }}</p>
             </div>
         </div>
     </div>
@@ -27,7 +27,9 @@
 
    .preview-header{
        font-weight: 600 !important;
-       font-size: 18px !important;
+       font-size: 24px !important;
+       line-height: 28px !important;
+       letter-spacing: -.42px!important;
    }
 
    .preview-text, .preview-time{
@@ -38,6 +40,7 @@
 
    .feature:hover{
        box-shadow: 0px 0px 20px gray !important;
+       cursor: pointer;
    }
 </style>
 
@@ -53,7 +56,11 @@ export default {
        }
     },
     methods :{
-
-    }
+        properDate : (d)=>{
+           let date = new Date(d) 
+           return date.toDateString()
+        }
+    },
+  
 }
 </script>

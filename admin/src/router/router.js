@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-//import user routes
-import Home from '../users/Home.vue'
+
 //import admin routes
 import AddCategory from '../admin/components/AddCategory.vue'
 import ViewCategories from '../admin/components/ViewCategories.vue'
@@ -11,6 +10,7 @@ import AddTag from '../admin/components/AddTag.vue'
 import ViewTags from '../admin/components/ViewTags.vue'
 import EditPost from '../admin/components/EditPost.vue'
 import Admin from '../admin/Admin.vue'
+import FeaturedPosts from '../admin/components/FeaturedPosts.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -55,6 +55,10 @@ export default new Router({
           path: '/editpost/:id',
           name: 'editPost',
           component: EditPost,
+        },{
+          path : '/featuredposts',
+          name : 'featuredposts',
+          component: FeaturedPosts
         }
        ]
      }

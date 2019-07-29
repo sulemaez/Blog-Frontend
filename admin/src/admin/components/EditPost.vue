@@ -15,9 +15,7 @@
                 <!-- ToDo add tags -->
               </div>
 
-              <div id="tag-div">
-                   
-              </div>
+              <div id="tag-div"></div>
        </form>
        <label for="body">Body</label>
                <quill-editor ref="myTextEditor"
@@ -26,7 +24,7 @@
         </quill-editor>
 
         <div>
-            <button @click="save()" class="btn btn-primary">
+            <button @click="save()" class="savebtnpostedit btn btn-primary">
               Save Edit
             </button>
         </div>
@@ -103,12 +101,14 @@ export default {
          });
       
          //TODO validate
+         
          let post = {
            post : {
               title : title,
               slug : slug,
               body : body,
-              preview : preview
+              preview : preview,
+              featured : this.rowData.featured
            },
            categoryId:categoryId,
            tags : tags 
@@ -208,7 +208,7 @@ export default {
        width: 60%;
     }
 
-    button{
+    .savebtnpostedit{
       margin-top: 20px;
       width: 300px;
     }

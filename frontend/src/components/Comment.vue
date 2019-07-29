@@ -7,9 +7,7 @@
            <div class="col-10">
                 <h5 class="text-left">John Stewart</h5>
                  <p style="font-size:15px;">20 May 2012</p>
-                <p>
-                This is a very great post thanks steve
-                </p>  
+                <p>This is a very great post thanks steve</p>  
            </div>
         </div>
          

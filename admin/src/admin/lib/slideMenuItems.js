@@ -46,7 +46,15 @@ module.exports = [
         name: 'view all',
         router: {
           name : 'indexPosts'
-        }
+        },
+      },
+      {
+        type: 'item',
+        icon: 'fa fa-circle-o',
+        name: 'featured posts',
+        router: {
+          name : 'featuredposts'
+        },
       }
     ]
   },

@@ -6,7 +6,13 @@
         <div class="container main-read mt-4">
             <div class="row justify-content-center align-content-center">
               <div class="col-12 col-sm-10 col-md-8 col-lg-7">
+                  
                   <h1 class="read-title">{{post.title}}</h1>
+                  <div class="tags-list row pl-3" >
+                     <span v-for="tag in post.tags" class="tags mr-2">
+                        <a>#{{tag.name}}</a>
+                     </span>
+                  </div>
                   <p>{{ properDate(post.created) }}</p>
                   <div ref="content" class="content mt-4">    
                   </div>

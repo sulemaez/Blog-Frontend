@@ -19,6 +19,13 @@ export default {
  #app{
     background-color: #fcfcfc;
 }
+
+
+.tags{
+  color: blue;
+  cursor: pointer;   
+}
+
  
 </style>
 

@@ -4,12 +4,11 @@
             :api-url="url"
             :fields="fields"
             :css="css.table"
-             @vuetable:pagination-data="onPaginationData"
-       
-  >
+             @vuetable:pagination-data="onPaginationData">
    <div slot="action-slot" slot-scope="props">
       <button class="btn btn-primary" @click="editRow(props.rowData)"><i class="glyphicon glyphicon-pencil"></i></button> 
       <button class="btn btn-danger" @click="deleteRow(props.rowData.postId)"><i class="glyphicon glyphicon-remove"></i></button> 
+      <button @click="setFeatured(props.rowData.postId)" v-if="props.rowData.featured == false" class="btn btn-dark" style="margin-top:4px;"><i class="glyphicon glyphicon-star"></i></button>
    </div>
     </vuetable>
     <vuetable-pagination ref="pagination"
@@ -30,7 +29,7 @@ export default {
   },
   data(){
      return{
-         url : `${this.$url}posts`,
+         url : `${this.$urluser}posts`,
          editCategoryName:"",
          editDescription:"",
          editId : -1,
@@ -58,7 +57,8 @@ export default {
              name : 'created',
              title : 'CREATED',
              sortField : 'created',
-             width: '20%'
+             width: '20%',
+             
           }, 
            {
            name: "action-slot",
@@ -141,47 +141,36 @@ export default {
      onPaginationData(data){
         this.$refs.pagination.setPaginationData(data)
      },
-     confirmEdit(){
+     setFeatured(id){
          this.$swal.fire({
-            title: 'Are you sure?',
-            text: "Edit Category",
-            type: 'warning',
+            title: 'Feature selected post ?',
+            text: "",
+            type: 'info',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, Edit it!'
-         })
-         .then((result)=>{
-             //if confirmed edit
-             if(result.value){
-                 let nameS = document.querySelector("#name").value
-                 this.$http.put(`${this.url}/${this.editId}`,{
-				           name: nameS,
-  					     })  
-                 .then((data)=>{
-                    this.$swal.fire(
-                      'Edited!',
-                      'Category deleted.',
+            confirmButtonText: 'Yes, Feature!'
+        })
+        .then(result=>{
+            if(result.value){
+               this.$http.put(`${this.$url}posts/featured/${id}`)
+               .then(data=>{
+                     this.$swal.fire(
+                      'Featured!',
+                      'Post featured successfully.',
                       'success'
                     )
-                    this.cancelEdit()
                     this.$refs.vuetable.refresh()
-                 })
-                 .catch((err)=>{
-                    this.$swal({
-								type : 'error',
-								title : 'Failed to Edit!',
-								showConfirmButton : false,
-								timer : 1500 
-							})
-                 })
-             }
-         })
-     },
-     cancelEdit(){
-        $('#bsModal').modal('hide')
-        this.editCategoryName = ""
-        this.editId = -1
+               })
+               .catch(err=>{
+                     this.$swal.fire(
+                       `${err.response.data.message}`,
+                        'failed',
+                      'error'
+                    )
+               });
+            }
+        })
      }
   },
    components: {

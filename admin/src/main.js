@@ -25,7 +25,6 @@ Vue.prototype.$url = "http://localhost:8080/admin/"
 Vue.prototype.$urluser = "http://localhost:8080/"
 
 
-
 new Vue({
   el: '#vue-app',
   render: h => h(app),

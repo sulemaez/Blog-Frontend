@@ -35,7 +35,7 @@
         </quill-editor>
 
         <div>
-            <button @click="save()" class="btn btn-primary">
+            <button @click="save()" class="savePostBtn btn btn-primary">
               Save Post
             </button>
         </div>
@@ -100,7 +100,8 @@ export default {
               title : title,
               slug : slug,
               body : body,
-              preview : preview
+              preview : preview,
+              featured : false
            },
            categoryId:categoryId,
            tags : tags 
@@ -167,7 +168,7 @@ export default {
        width: 60%;
     }
 
-    button{
+  .savePostBtn{
       margin-top: 20px;
       width: 300px;
     }

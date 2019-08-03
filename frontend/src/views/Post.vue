@@ -10,7 +10,7 @@
                   <h1 class="read-title">{{post.title}}</h1>
                   <div class="tags-list row pl-3" >
                      <span v-for="tag in post.tags" class="tags mr-2">
-                        <a>#{{tag.name}}</a>
+                        <a @click="searchTag(tag.tagId,tag.name)">#{{tag.name}}</a>
                      </span>
                   </div>
                   <p>{{ properDate(post.created) }}</p>
@@ -50,6 +50,9 @@
         properDate : (d)=>{
            let date = new Date(d) 
            return date.toDateString()
+        },
+        searchTag(id,name){
+          this.$router.push(`/search?tag=${id}&name=${name}`)
         }
     },
     mounted(){

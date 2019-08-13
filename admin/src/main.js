@@ -13,7 +13,7 @@ import EventBus from 'va/lib/eventBus.js'
 import VueSweetalert2 from 'vue-sweetalert2';
 import app from './App.vue'
 
-let alertOptions ={
+let alertOptions = { 
 
 }
 
